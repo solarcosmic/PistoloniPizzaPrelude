@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5314cdd1akf" path="res://scenes/world.gd" id="1_i7141"]
 [ext_resource type="Script" uid="uid://btdayovqiix7e" path="res://scripts/Player.gd" id="1_nnsk1"]
-[ext_resource type="Texture2D" uid="uid://be8u3rdc8ha7u" path="res://sprites/texture_01.png" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://bwm8mxxfysryt" path="res://assets/decorative-background-glitter-detail_23-2148210038.png" id="2_i7141"]
 [ext_resource type="Shader" uid="uid://dau6mrtpa8hcc" path="res://assets/ps1psx.gdshader" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://bg3mwk8ijmdd5" path="res://assets/RIgged Character.fbx" id="3_71j4m"]
 [ext_resource type="AudioStream" uid="uid://b5m4l3f40ox8m" path="res://assets/sounds/Extreme_Thunder_With_Rain_KLICKAUD.mp3" id="6_qfnet"]
@@ -25,10 +25,14 @@ fog_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.13333334, 0.19607843, 0.19607843, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wyf3"]
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_rwgxs")
-uv1_triplanar = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7r4gi"]
+render_priority = 0
+shader = ExtResource("3_4wyf3")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_i7141")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_71j4m"]
 
@@ -164,7 +168,7 @@ environment = SubResource("Environment_k0juu")
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1963850749]
 use_collision = true
 size = Vector3(16.963135, 1, 14.477539)
-material = SubResource("StandardMaterial3D_4wyf3")
+material = SubResource("ShaderMaterial_7r4gi")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1526623538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74248, 31.065224)
