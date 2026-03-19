@@ -14,12 +14,12 @@ sky_horizon_color = Color(0.08235294, 0.14117648, 0.14117648, 1)
 ground_bottom_color = Color(0.039215688, 0.06666667, 0.06666667, 1)
 ground_horizon_color = Color(0.101960786, 0.14901961, 0.14901961, 1)
 
-[sub_resource type="Sky" id="Sky_4wyf3"]
+[sub_resource type="Sky" id="Sky_i7141"]
 sky_material = SubResource("ProceduralSkyMaterial_rwgxs")
 
 [sub_resource type="Environment" id="Environment_k0juu"]
 background_mode = 2
-sky = SubResource("Sky_4wyf3")
+sky = SubResource("Sky_i7141")
 tonemap_mode = 2
 fog_enabled = true
 volumetric_fog_enabled = true
@@ -31,7 +31,7 @@ shader = ExtResource("3_4wyf3")
 shader_parameter/affine_mapping = false
 shader_parameter/albedo = ExtResource("2_i7141")
 shader_parameter/alpha_scissor = 0.5
-shader_parameter/jitter = 0.25
+shader_parameter/jitter = 0.1390000066025
 shader_parameter/resolution = Vector2i(320, 240)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_71j4m"]
@@ -42,14 +42,14 @@ points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4
 [sub_resource type="Gradient" id="Gradient_71j4m"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0.3372549, 0.34901962, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qfnet"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4mrxx"]
 gradient = SubResource("Gradient_71j4m")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7141"]
 render_priority = 0
 shader = ExtResource("3_4wyf3")
 shader_parameter/affine_mapping = false
-shader_parameter/albedo = SubResource("GradientTexture2D_qfnet")
+shader_parameter/albedo = SubResource("GradientTexture2D_4mrxx")
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.50000002375
 shader_parameter/resolution = Vector2i(320, 240)
@@ -61,57 +61,9 @@ font_size = 48
 [sub_resource type="Animation" id="Animation_4mrxx"]
 resource_name = "Cutscene1"
 length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 6.99),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-2.005, 4.51, 7.575), Vector3(-2.005, 4.51, 7.575)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 6.99),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.6981317, 0.28797933, 0), Vector3(-0.25307274, -0.30543262, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_7r4gi"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-2.005, 4.51, 7.575)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.6981317, -0.30543262, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7kh3"]
 _data = {
@@ -130,19 +82,19 @@ collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.0
 
-[sub_resource type="Curve" id="Curve_4mrxx"]
+[sub_resource type="Curve" id="Curve_7r4gi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.04, 0.15297449), 0.0, 0.0, 0, 0, Vector2(0.9054545, 0.040662766), 0.0, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_count = 34
 
-[sub_resource type="Gradient" id="Gradient_4mrxx"]
+[sub_resource type="Gradient" id="Gradient_w7kh3"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7r4gi"]
-gradient = SubResource("Gradient_4mrxx")
+gradient = SubResource("Gradient_w7kh3")
 width = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mrxx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3hyu"]
 render_priority = 0
 shader = ExtResource("3_4wyf3")
 shader_parameter/affine_mapping = false
@@ -152,8 +104,8 @@ shader_parameter/jitter = 0.1450000068875
 shader_parameter/resolution = Vector2i(320, 240)
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7r4gi"]
-material = SubResource("ShaderMaterial_4mrxx")
-curve = SubResource("Curve_4mrxx")
+material = SubResource("ShaderMaterial_e3hyu")
+curve = SubResource("Curve_7r4gi")
 
 [node name="World" type="Node3D" unique_id=814852709]
 script = ExtResource("1_i7141")
@@ -171,7 +123,7 @@ size = Vector3(16.963135, 1, 14.477539)
 material = SubResource("ShaderMaterial_7r4gi")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1526623538]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74248, 31.065224)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74248, 2.6437416)
 script = ExtResource("1_nnsk1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=962705170]
@@ -197,6 +149,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_i7141")
 stream = ExtResource("6_qfnet")
 
 [node name="MainUI" type="CanvasLayer" parent="." unique_id=289619648]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="MainUI" unique_id=1309004173]
 anchors_preset = 15
@@ -230,9 +183,6 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=408984891]
 libraries/ = SubResource("AnimationLibrary_w7kh3")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2035028697]
-transform = Transform3D(0.95371693, -0.19328995, -0.230354, 0, 0.76604444, -0.6427876, 0.3007058, 0.6130374, 0.73058957, -2.005, 4.51, 7.575)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=279249692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.91558, 0)

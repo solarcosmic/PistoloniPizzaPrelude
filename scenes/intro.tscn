@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://dtebruphvkgim"]
+
+[ext_resource type="Script" uid="uid://jhibrypqdptv" path="res://scenes/intro.gd" id="1_ioskq"]
+[ext_resource type="Shader" uid="uid://dau6mrtpa8hcc" path="res://assets/ps1psx.gdshader" id="2_es01l"]
+[ext_resource type="Texture2D" uid="uid://bwm8mxxfysryt" path="res://assets/decorative-background-glitter-detail_23-2148210038.png" id="3_0naf5"]
+[ext_resource type="PackedScene" uid="uid://bg3mwk8ijmdd5" path="res://assets/RIgged Character.fbx" id="4_bu1yb"]
+[ext_resource type="AudioStream" uid="uid://b5m4l3f40ox8m" path="res://assets/sounds/Extreme_Thunder_With_Rain_KLICKAUD.mp3" id="5_t1qkj"]
+[ext_resource type="FontFile" uid="uid://dxrvabvhc7wa7" path="res://assets/fonts/Jersey10-Regular.ttf" id="6_es01l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37iue"]
+sky_top_color = Color(0.05882353, 0.105882354, 0.105882354, 1)
+sky_horizon_color = Color(0.08235294, 0.14117648, 0.14117648, 1)
+ground_bottom_color = Color(0.039215688, 0.06666667, 0.06666667, 1)
+ground_horizon_color = Color(0.101960786, 0.14901961, 0.14901961, 1)
+
+[sub_resource type="Sky" id="Sky_4wyf3"]
+sky_material = SubResource("ProceduralSkyMaterial_37iue")
+
+[sub_resource type="Environment" id="Environment_n6p8m"]
+background_mode = 2
+sky = SubResource("Sky_4wyf3")
+tonemap_mode = 2
+fog_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.13333334, 0.19607843, 0.19607843, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3r7s"]
+render_priority = 0
+shader = ExtResource("2_es01l")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("3_0naf5")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="Gradient" id="Gradient_xwriy"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.3372549, 0.34901962, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qfnet"]
+gradient = SubResource("Gradient_xwriy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5myo"]
+render_priority = 0
+shader = ExtResource("2_es01l")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = SubResource("GradientTexture2D_qfnet")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.50000002375
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u05oh"]
+font = ExtResource("6_es01l")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_4mrxx"]
+resource_name = "Cutscene1"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.005, 4.51, 7.575), Vector3(-2.005, 4.51, 7.575)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.6981317, 0.2879793, 0), Vector3(-0.25307274, -0.30543262, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7r4gi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.005, 4.51, 7.575)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6981317, -0.30543262, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epycs"]
+_data = {
+&"Cutscene1": SubResource("Animation_4mrxx"),
+&"RESET": SubResource("Animation_7r4gi")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ge50m"]
+emission_shape = 3
+emission_box_extents = Vector3(16.963, 1, 14.478)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_4mrxx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.04, 0.15297449), 0.0, 0.0, 0, 0, Vector2(0.9054545, 0.040662766), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_count = 34
+
+[sub_resource type="Gradient" id="Gradient_4mrxx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_17bgi"]
+gradient = SubResource("Gradient_4mrxx")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mrxx"]
+render_priority = 0
+shader = ExtResource("2_es01l")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = SubResource("GradientTexture1D_17bgi")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.1450000068875
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_dryi7"]
+material = SubResource("ShaderMaterial_4mrxx")
+curve = SubResource("Curve_4mrxx")
+
+[node name="Intro" type="Node3D" unique_id=1311492200]
+script = ExtResource("1_ioskq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=385286680]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=336712689]
+environment = SubResource("Environment_n6p8m")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=307839598]
+use_collision = true
+size = Vector3(16.963135, 1, 14.477539)
+material = SubResource("ShaderMaterial_m3r7s")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1477962788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.4350162, 0, 4.3734264, 0)
+use_collision = true
+size = Vector3(16.963135, 1, 14.477539)
+material = SubResource("ShaderMaterial_m3r7s")
+
+[node name="RIgged Character" parent="." unique_id=2065313554 instance=ExtResource("4_bu1yb")]
+transform = Transform3D(-0.2155063, 2.2292244e-14, 0.15928337, 0, 1.5881133, -2.2915975e-15, -1.3648157, -3.5199729e-15, -0.02515107, -2.8378134, 0.4896381, 2.0913293)
+
+[node name="Cube" parent="RIgged Character/Skeleton3D" parent_id_path=PackedInt32Array(2065313554, 528933180) index="0" unique_id=1785911381]
+transform = Transform3D(0.07963346, -1.323489e-23, -1.8626451e-09, -1.323489e-23, 0.06949641, -1.323489e-23, -7.450581e-09, -4.7645603e-22, 0.953774, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_u5myo")
+
+[node name="Sounds" type="Node3D" parent="." unique_id=525251097]
+
+[node name="ExtremeThunderWithRainKlickaud" type="AudioStreamPlayer" parent="Sounds" unique_id=112459260]
+stream = ExtResource("5_t1qkj")
+
+[node name="MainUI" type="CanvasLayer" parent="." unique_id=1068768095]
+
+[node name="ColorRect" type="ColorRect" parent="MainUI" unique_id=1351581245]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="MainUI" unique_id=881898862]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="MainUI" unique_id=1136531062]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.5
+offset_top = -44.0
+offset_right = 473.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Lazy Couch Collective Presents"
+label_settings = SubResource("LabelSettings_u05oh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1446071349]
+libraries/ = SubResource("AnimationLibrary_epycs")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1052176522]
+transform = Transform3D(0.95371693, -0.19328995, -0.23035398, 0, 0.76604444, -0.6427875, 0.3007058, 0.6130374, 0.7305895, -2.005, 4.51, 7.575)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=435702088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.91558, 0)
+amount = 250
+speed_scale = 2.5
+visibility_aabb = AABB(-10, -20, -10, 20, 20, 20)
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_ge50m")
+draw_pass_1 = SubResource("RibbonTrailMesh_dryi7")
+
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="." unique_id=369700189]
+transform = Transform3D(9.942098, 0, 0, 0, 9.942098, 0, 0, 0, 9.942098, 0, 0, 0)
+
+[connection signal="finished" from="Sounds/ExtremeThunderWithRainKlickaud" to="." method="_on_extreme_thunder_with_rain_klickaud_finished"]
+
+[editable path="RIgged Character"]
