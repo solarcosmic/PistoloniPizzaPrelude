@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bwm8mxxfysryt" path="res://assets/decorative-background-glitter-detail_23-2148210038.png" id="2_i7141"]
 [ext_resource type="Shader" uid="uid://dau6mrtpa8hcc" path="res://assets/ps1psx.gdshader" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://bg3mwk8ijmdd5" path="res://assets/RIgged Character.fbx" id="3_71j4m"]
+[ext_resource type="PackedScene" uid="uid://dhiw2mfpblr4q" path="res://scenes/gun.tscn" id="5_4mrxx"]
 [ext_resource type="AudioStream" uid="uid://b5m4l3f40ox8m" path="res://assets/sounds/Extreme_Thunder_With_Rain_KLICKAUD.mp3" id="6_qfnet"]
 [ext_resource type="FontFile" uid="uid://bscq6lnina27q" path="res://assets/fonts/DMSans-VariableFont_opsz,wght.ttf" id="8_4mrxx"]
 
@@ -134,12 +135,17 @@ shape = SubResource("ConvexPolygonShape3D_qfnet")
 
 [node name="Head" type="Node3D" parent="Player" unique_id=1317975235]
 
-[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=1772103347]
+[node name="PitchPivot" type="Node3D" parent="Player/Head" unique_id=2063553249]
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head/PitchPivot" unique_id=1772103347]
+
+[node name="Gun" parent="Player/Head/PitchPivot" unique_id=366237150 instance=ExtResource("5_4mrxx")]
+transform = Transform3D(1, 0, 0, 0, 0.9999975, 0.0022863133, 0, -0.0022863133, 0.9999975, 0.5031996, -0.3237872, 0.3933704)
 
 [node name="RIgged Character" parent="." unique_id=2065313554 instance=ExtResource("3_71j4m")]
 transform = Transform3D(-0.2155063, 2.2292244e-14, 0.15928337, 0, 1.5881133, -2.2915975e-15, -1.3648157, -3.5199729e-15, -0.02515107, -2.8378134, 0.4896381, 2.0913293)
 
-[node name="Cube" parent="RIgged Character/Skeleton3D" parent_id_path=PackedInt32Array(2065313554, 528933180) index="0" unique_id=1785911381]
+[node name="Cube" parent="RIgged Character/Skeleton3D" parent_id_path=PackedInt32Array(2065313554, 114220989) index="0" unique_id=365330721]
 transform = Transform3D(0.07963346, -1.323489e-23, -1.8626451e-09, -1.323489e-23, 0.06949641, -1.323489e-23, -7.450581e-09, -4.7645603e-22, 0.953774, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_i7141")
 
@@ -192,6 +198,9 @@ visibility_aabb = AABB(-10, -20, -10, 20, 20, 20)
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_4mrxx")
 draw_pass_1 = SubResource("RibbonTrailMesh_7r4gi")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1656982152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5889006, 4.705806, 6.4526877)
 
 [connection signal="finished" from="Sounds/ExtremeThunderWithRainKlickaud" to="." method="_on_extreme_thunder_with_rain_klickaud_finished"]
 

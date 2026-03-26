@@ -9,7 +9,7 @@ const BOB_AMP = 0.08
 var t_bob = 0.0
 
 @onready var head: Node3D = $Head
-@onready var camera = $Head/Camera3D
+@onready var camera = $Head/PitchPivot/Camera3D
 
 var controller_yaw = 0.0
 var controller_pitch = 0.0
@@ -29,8 +29,8 @@ var controller_joy_vector = Vector2.ZERO
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		$Head/PitchPivot.rotate_x(-event.relative.y * SENSITIVITY)
+		$Head/PitchPivot.rotation.x = clamp($Head/PitchPivot.rotation.x, deg_to_rad(-17.5), deg_to_rad(75))
 	elif event is InputEventJoypadMotion:
 		controller_joy_vector = Input.get_vector("cam_left", "cam_right", "cam_up", "cam_down")
 		
@@ -52,6 +52,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	#$Head/Gun.rotation.x = $Head/Camera3D.rotation.x
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
