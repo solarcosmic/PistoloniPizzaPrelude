@@ -11,6 +11,12 @@ var t_bob = 0.0
 @onready var head: Node3D = $Head
 @onready var camera = $Head/PitchPivot/Camera3D
 
+@onready var raycast3d = $Head/PitchPivot/Camera3D/RayCast3D
+@onready var raycastend = $Head/PitchPivot/Camera3D/RayCast3D/RayCastEnd
+@onready var bulletmarker = $Head/PitchPivot/Gun/BulletStartMarker
+
+const bullet = preload("res://scenes/bullet.tscn")
+
 var controller_yaw = 0.0
 var controller_pitch = 0.0
 
@@ -27,6 +33,10 @@ func _ready():
 var controller_joy_vector = Vector2.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("trigger"):
+		print("shoot")
+		_shoot()
+
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		$Head/PitchPivot.rotate_x(-event.relative.y * SENSITIVITY)
@@ -34,6 +44,24 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventJoypadMotion:
 		controller_joy_vector = Input.get_vector("cam_left", "cam_right", "cam_up", "cam_down")
 		
+
+func _shoot():
+	var bulletClone = bullet.instantiate()
+	get_tree().current_scene.add_child(bulletClone)
+	print(bulletClone)
+	bulletClone.global_position = bulletmarker.global_position
+	var dir = _get_shoot_direction()
+	bulletClone.direction = dir
+	bulletClone.look_at(raycastend.global_position + dir)
+
+func _get_shoot_direction():
+	var target: Vector3
+	if raycast3d.is_colliding():
+		target = raycast3d.get_collision_point()
+	else:
+		target = raycast3d.to_global(raycast3d.target_position)
+	return bulletmarker.global_position.direction_to(target)
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
