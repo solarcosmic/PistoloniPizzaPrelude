@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://dau6mrtpa8hcc" path="res://assets/ps1psx.gdshader" id="2_l5glv"]
 
 [sub_resource type="Gradient" id="Gradient_eoqba"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qncy5"]
 gradient = SubResource("Gradient_eoqba")
@@ -27,11 +28,11 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 script = ExtResource("1_y25gk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=511760062]
-transform = Transform3D(-8.742277e-09, 0, 0.04, 0, 0.04, 0, -0.19999999, 0, -1.7484555e-09, 0, 0, 0)
+transform = Transform3D(-2.6226834e-08, 0, 0.12, 0, 0.12, 0, -0.6, 0, -5.2453664e-09, 0, 0, 0)
 mesh = SubResource("BoxMesh_26lx3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=759974227]
-transform = Transform3D(-8.742277e-09, 0, 0.04, 0, 0.04, 0, -0.19999999, 0, -1.7484555e-09, 0, 0, 0)
+transform = Transform3D(-2.6226834e-08, 0, 0.12, 0, 0.12, 0, -0.6, 0, -5.2453664e-09, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_1cfmv")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
