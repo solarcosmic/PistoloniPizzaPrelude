@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DiscordRPCLoader="*uid://k1ai3cpv45fp"
 DiscordConnect="*uid://cypcrwm8llv87"
+Globals="*uid://8siimc1h8u5u"
 
 [display]
 

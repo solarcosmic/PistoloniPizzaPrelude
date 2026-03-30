@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bg3mwk8ijmdd5" path="res://assets/RIgged Character.fbx" id="3_71j4m"]
 [ext_resource type="PackedScene" uid="uid://dhiw2mfpblr4q" path="res://scenes/gun.tscn" id="5_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://btl63y2e5l35" path="res://sprites/ELR_Crosshairs.png" id="5_7r4gi"]
-[ext_resource type="AudioStream" uid="uid://b5m4l3f40ox8m" path="res://assets/sounds/Extreme_Thunder_With_Rain_KLICKAUD.mp3" id="6_qfnet"]
 [ext_resource type="FontFile" uid="uid://bscq6lnina27q" path="res://assets/fonts/DMSans-VariableFont_opsz,wght.ttf" id="8_4mrxx"]
+[ext_resource type="AudioStream" uid="uid://pwfne8pg70ji" path="res://assets/sounds/thunder_rain1.ogg" id="8_jhx03"]
+[ext_resource type="AudioStream" uid="uid://cf6o5q78ysfdh" path="res://assets/sounds/pistol1.ogg" id="9_q5onr"]
 [ext_resource type="Script" uid="uid://br3lrvtnwas8y" path="res://scenes/hud.gd" id="10_w7kh3"]
+[ext_resource type="FontFile" uid="uid://dxrvabvhc7wa7" path="res://assets/fonts/Jersey10-Regular.ttf" id="11_e3hyu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwgxs"]
 sky_top_color = Color(0.05882353, 0.105882354, 0.105882354, 1)
@@ -858,8 +860,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_i7141")
 
 [node name="Sounds" type="Node3D" parent="." unique_id=168586294]
 
-[node name="ExtremeThunderWithRainKlickaud" type="AudioStreamPlayer" parent="Sounds" unique_id=1117330762]
-stream = ExtResource("6_qfnet")
+[node name="ThunderRain1" type="AudioStreamPlayer" parent="Sounds" unique_id=77265631]
+stream = ExtResource("8_jhx03")
+
+[node name="Pistol1" type="AudioStreamPlayer" parent="Sounds" unique_id=1819433192]
+stream = ExtResource("9_q5onr")
 
 [node name="MainUI" type="CanvasLayer" parent="." unique_id=289619648]
 visible = false
@@ -925,6 +930,44 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_gw1vw")
 frame = 32
 
-[connection signal="finished" from="Sounds/ExtremeThunderWithRainKlickaud" to="." method="_on_extreme_thunder_with_rain_klickaud_finished"]
+[node name="Label" type="Label" parent="HUD" unique_id=1774682779]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -235.0
+offset_top = -109.0
+offset_right = 236.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("11_e3hyu")
+theme_override_font_sizes/font_size = 48
+text = "Get back to work, squeaker."
+
+[node name="Label2" type="Label" parent="HUD" unique_id=1589576825]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -235.0
+offset_top = -138.0
+offset_right = 236.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("11_e3hyu")
+theme_override_font_sizes/font_size = 32
+text = "Boss"
+
+[connection signal="finished" from="Sounds/ThunderRain1" to="." method="_on_thunder_rain_sound_finished"]
 
 [editable path="RIgged Character"]

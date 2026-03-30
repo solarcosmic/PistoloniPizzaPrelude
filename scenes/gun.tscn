@@ -9,7 +9,7 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 0.62352943, 0, 1)
 gradient = SubResource("Gradient_x77fm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mrxx"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_x77fm")
 shader_parameter/affine_mapping = false
 shader_parameter/albedo = SubResource("GradientTexture2D_og67c")

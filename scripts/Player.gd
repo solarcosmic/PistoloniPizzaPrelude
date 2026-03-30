@@ -24,10 +24,13 @@ var controller_pitch = 0.0
 @export var min_pitch = -60
 @export var camera_sensitivity = 10
 
+var direction: Vector3 = Vector3.ZERO
+
 var SENSITIVITY = camera_sensitivity / 10000.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Globals.set_player($".")
 	#Engine.max_fps = 144
 
 var controller_joy_vector = Vector2.ZERO
@@ -53,6 +56,7 @@ func _shoot():
 	var dir = _get_shoot_direction()
 	bulletClone.direction = dir
 	bulletClone.look_at(raycastend.global_position + dir)
+	$"../Sounds/Pistol1".play()
 
 func _get_shoot_direction():
 	var target: Vector3
@@ -86,7 +90,8 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
-	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	print("[Cosmic/DEBUG] Direction: ", direction, " Velocity: ", velocity)
 	if is_on_floor():
 		if direction:
 			velocity.x = direction.x * SPEED
@@ -101,6 +106,10 @@ func _physics_process(delta: float) -> void:
 	
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
+	
+	var is_idle = Globals.is_player_idle()
+	if is_idle and is_on_floor():
+		print("[Cosmic/DEBUG]: " + str(Time.get_unix_time_from_system()) + " is idle")
 
 	move_and_slide()
 
