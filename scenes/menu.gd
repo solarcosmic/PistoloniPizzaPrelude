@@ -15,7 +15,6 @@ func _ready() -> void:
 	initial = camera.rotation
 	current_sway = Vector3.ZERO
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -30,3 +29,8 @@ func _process(delta: float) -> void:
 	#camera.rotation.y = lerp_angle(camera.rotation.y, target_y, speed * delta)
 	#var target = initial + Vector3(target_x, target_y, 0)
 	#camera.rotation = camera.rotation.lerp(target, speed * delta)
+
+
+func _on_new_game_button_down() -> void:
+	print("test")
+	get_tree().change_scene_to_file("res://scenes/intro.tscn")

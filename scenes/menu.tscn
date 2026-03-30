@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dxrvabvhc7wa7" path="res://assets/fonts/Jersey10-Regular.ttf" id="5_4ytvr"]
 [ext_resource type="Shader" uid="uid://daflw5w2sphxd" path="res://assets/linear-gradient.gdshader" id="6_g3eks"]
 [ext_resource type="Shader" uid="uid://no142clhe8s3" path="res://assets/shaders/text-gradient.gdshader" id="6_v86rl"]
+[ext_resource type="Texture2D" uid="uid://wiytpvw2i7d8" path="res://sprites/pistoloni_pizza_nobg.png" id="7_i6lef"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13sgg"]
 sky_top_color = Color(0.05882353, 0.105882354, 0.105882354, 1)
@@ -126,6 +127,8 @@ shader_parameter/gradient_mix_amount = -1.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86rl"]
 bg_color = Color(0.4, 0.2901961, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6lef"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13sgg"]
 bg_color = Color(0.65882355, 0.3529412, 0.25882354, 1)
 
@@ -181,6 +184,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = SubResource("Theme_4ytvr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ActualMenu/Control" unique_id=563580409]
+modulate = Color(0, 0, 0, 0.6039216)
+position = Vector2(112.87233, 148.87234)
+rotation = -0.2617994
+scale = Vector2(0.3599995, 0.3599995)
+texture = ExtResource("7_i6lef")
+
+[node name="Sprite2D" type="Sprite2D" parent="ActualMenu/Control" unique_id=1866675574]
+modulate = Color(0.35906908, 0.35906908, 0.35906908, 1)
+position = Vector2(108.87233, 145.87233)
+rotation = -0.2617994
+scale = Vector2(0.3599995, 0.3599995)
+texture = ExtResource("7_i6lef")
 
 [node name="Label3" type="Label" parent="ActualMenu/Control" unique_id=92615316]
 material = SubResource("ShaderMaterial_v86rl")
@@ -279,6 +296,7 @@ layout_mode = 2
 [node name="Button" type="Button" parent="ActualMenu/Control/MarginContainer2/VBoxContainer" unique_id=1272320698]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v86rl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i6lef")
 text = "New Game"
 
 [node name="Button2" type="Button" parent="ActualMenu/Control/MarginContainer2/VBoxContainer" unique_id=41183597]
@@ -294,6 +312,7 @@ text = "Quit"
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="ActualMenu/Control/Control" unique_id=1173072082]
 layout_direction = 2
@@ -325,6 +344,8 @@ transform = Transform3D(1.0696012, 1.4287101e-14, 0.10208472, -1.8357416e-21, 1.
 [node name="Cube" parent="RIgged Character2/Skeleton3D" parent_id_path=PackedInt32Array(2065313554, 528933180) index="0" unique_id=1785911381]
 transform = Transform3D(0.07963346, -1.323489e-23, -1.8626451e-09, -1.323489e-23, 0.06949641, -1.323489e-23, -7.450581e-09, -4.7645603e-22, 0.953774, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_ufwb2")
+
+[connection signal="button_down" from="ActualMenu/Control/MarginContainer2/VBoxContainer/Button" to="." method="_on_new_game_button_down"]
 
 [editable path="RIgged Character"]
 [editable path="RIgged Character2"]
