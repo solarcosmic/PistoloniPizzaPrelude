@@ -88,13 +88,16 @@ curve = SubResource("Curve_7r4gi")
 default_font = ExtResource("5_4ytvr")
 default_font_size = 64
 
+[sub_resource type="Gradient" id="Gradient_g3eks"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v86rl"]
+gradient = SubResource("Gradient_g3eks")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v86rl"]
 shader = ExtResource("6_g3eks")
-shader_parameter/first_color = Color(1, 1, 1, 1)
-shader_parameter/second_color = Color(0, 0, 0, 1)
-shader_parameter/position = 0.0
-shader_parameter/size = 0.5
-shader_parameter/angle = 0.0
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_v86rl")
+shader_parameter/size = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mhnvy"]
 font = ExtResource("5_4ytvr")
