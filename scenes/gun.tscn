@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://dau6mrtpa8hcc" path="res://assets/ps1psx.gdshader" id="1_x77fm"]
 
 [sub_resource type="Gradient" id="Gradient_x77fm"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.62352943, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_og67c"]
 gradient = SubResource("Gradient_x77fm")
