@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://djn6wvbqeglbu"]
 
+[ext_resource type="Script" uid="uid://sbythr8im1o0" path="res://scenes/menu.gd" id="1_13sgg"]
 [ext_resource type="Shader" uid="uid://dau6mrtpa8hcc" path="res://assets/ps1psx.gdshader" id="1_mhnvy"]
 [ext_resource type="Texture2D" uid="uid://bwm8mxxfysryt" path="res://assets/decorative-background-glitter-detail_23-2148210038.png" id="2_4ytvr"]
 [ext_resource type="PackedScene" uid="uid://bg3mwk8ijmdd5" path="res://assets/RIgged Character.fbx" id="3_g3eks"]
@@ -31,7 +32,7 @@ shader = ExtResource("1_mhnvy")
 shader_parameter/affine_mapping = false
 shader_parameter/albedo = ExtResource("2_4ytvr")
 shader_parameter/alpha_scissor = 0.5
-shader_parameter/jitter = 0.1390000066025
+shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
 
 [sub_resource type="Gradient" id="Gradient_mj5lg"]
@@ -129,6 +130,7 @@ bg_color = Color(0.4, 0.2901961, 0, 1)
 bg_color = Color(0.65882355, 0.3529412, 0.25882354, 1)
 
 [node name="Menu" type="Node3D" unique_id=1526813273]
+script = ExtResource("1_13sgg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2067322623]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
