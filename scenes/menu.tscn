@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b5m4l3f40ox8m" path="res://assets/sounds/Extreme_Thunder_With_Rain_KLICKAUD.mp3" id="4_v86rl"]
 [ext_resource type="FontFile" uid="uid://dxrvabvhc7wa7" path="res://assets/fonts/Jersey10-Regular.ttf" id="5_4ytvr"]
 [ext_resource type="Shader" uid="uid://daflw5w2sphxd" path="res://assets/linear-gradient.gdshader" id="6_g3eks"]
+[ext_resource type="Shader" uid="uid://no142clhe8s3" path="res://assets/shaders/text-gradient.gdshader" id="6_v86rl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13sgg"]
 sky_top_color = Color(0.05882353, 0.105882354, 0.105882354, 1)
@@ -99,9 +100,33 @@ shader = ExtResource("6_g3eks")
 shader_parameter/gradient_texture = SubResource("GradientTexture1D_v86rl")
 shader_parameter/size = Vector2(0, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_mhnvy"]
-font = ExtResource("5_4ytvr")
-font_size = 84
+[sub_resource type="Gradient" id="Gradient_13sgg"]
+colors = PackedColorArray(0.46516627, 0.13386756, 0, 1, 1, 0.7516572, 0.7248787, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i6lef"]
+gradient = SubResource("Gradient_13sgg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj5lg"]
+shader = ExtResource("6_v86rl")
+shader_parameter/gradient = SubResource("GradientTexture1D_i6lef")
+shader_parameter/gradient_mix_amount = -1.0
+
+[sub_resource type="Gradient" id="Gradient_v86rl"]
+colors = PackedColorArray(0.37194782, 0.22659391, 0, 1, 0.8581884, 0.8581885, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_13sgg"]
+gradient = SubResource("Gradient_v86rl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13sgg"]
+shader = ExtResource("6_v86rl")
+shader_parameter/gradient = SubResource("GradientTexture1D_13sgg")
+shader_parameter/gradient_mix_amount = -1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86rl"]
+bg_color = Color(0.4, 0.2901961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13sgg"]
+bg_color = Color(0.65882355, 0.3529412, 0.25882354, 1)
 
 [node name="Menu" type="Node3D" unique_id=1526813273]
 
@@ -120,7 +145,7 @@ material = SubResource("ShaderMaterial_70i5f")
 [node name="RIgged Character" parent="." unique_id=2074910790 instance=ExtResource("3_g3eks")]
 transform = Transform3D(-0.2155063, 2.2292244e-14, 0.15928337, 0, 1.5881133, -2.2915975e-15, -1.3648157, -3.5199729e-15, -0.02515107, -2.8378134, 0.4896381, 2.0913293)
 
-[node name="Cube" parent="RIgged Character/Skeleton3D" parent_id_path=PackedInt32Array(2074910790, 114220989) index="0" unique_id=365330721]
+[node name="Cube" parent="RIgged Character/Skeleton3D" parent_id_path=PackedInt32Array(2074910790, 528933180) index="0" unique_id=1785911381]
 transform = Transform3D(0.07963346, -1.323489e-23, -1.8626451e-09, -1.323489e-23, 0.06949641, -1.323489e-23, -7.450581e-09, -4.7645603e-22, 0.953774, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_ufwb2")
 
@@ -139,7 +164,7 @@ process_material = SubResource("ParticleProcessMaterial_6cdou")
 draw_pass_1 = SubResource("RibbonTrailMesh_7jp70")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1099302544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5889006, 4.705806, 6.4526877)
+transform = Transform3D(0.66900337, 0.32383484, 0.6690033, -0.2289858, 0.94611365, -0.22898577, -0.70710677, 0, 0.7071068, 3.5889006, 0.6754761, 6.4526877)
 current = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=783530077]
@@ -155,6 +180,83 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = SubResource("Theme_4ytvr")
 
+[node name="Label3" type="Label" parent="ActualMenu/Control" unique_id=92615316]
+material = SubResource("ShaderMaterial_v86rl")
+layout_mode = 0
+offset_left = 341.0
+offset_top = 158.0
+offset_right = 839.0
+offset_bottom = 266.0
+scale = Vector2(0.68000054, 0.68000054)
+theme_override_fonts/font = ExtResource("5_4ytvr")
+theme_override_font_sizes/font_size = 100
+text = "DEMO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ActualMenu/Control" unique_id=64327025]
+material = SubResource("ShaderMaterial_v86rl")
+layout_mode = 0
+offset_left = 75.0
+offset_top = 78.0
+offset_right = 494.0
+offset_bottom = 169.0
+theme_override_fonts/font = ExtResource("5_4ytvr")
+theme_override_font_sizes/font_size = 100
+text = "Pistoloni Pizza"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="ActualMenu/Control" unique_id=1518084342]
+material = SubResource("ShaderMaterial_mj5lg")
+layout_mode = 0
+offset_left = 341.00003
+offset_top = 155.0
+offset_right = 839.0
+offset_bottom = 263.0
+scale = Vector2(0.8400003, 0.8400003)
+
+[node name="SubViewport" type="SubViewport" parent="ActualMenu/Control/SubViewportContainer2" unique_id=565169222]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(498, 108)
+render_target_update_mode = 4
+
+[node name="Label3" type="Label" parent="ActualMenu/Control/SubViewportContainer2/SubViewport" unique_id=257712684]
+material = SubResource("ShaderMaterial_v86rl")
+offset_right = 498.0
+offset_bottom = 108.0
+scale = Vector2(0.80952424, 0.80952424)
+theme_override_fonts/font = ExtResource("5_4ytvr")
+theme_override_font_sizes/font_size = 100
+text = "DEMO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="ActualMenu/Control" unique_id=869984503]
+material = SubResource("ShaderMaterial_13sgg")
+layout_mode = 0
+offset_left = 75.0
+offset_top = 75.0
+offset_right = 494.0
+offset_bottom = 166.0
+
+[node name="SubViewport" type="SubViewport" parent="ActualMenu/Control/SubViewportContainer" unique_id=1537220630]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(498, 108)
+render_target_update_mode = 4
+
+[node name="Label" type="Label" parent="ActualMenu/Control/SubViewportContainer/SubViewport" unique_id=1865772351]
+material = SubResource("ShaderMaterial_v86rl")
+offset_right = 419.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("5_4ytvr")
+theme_override_font_sizes/font_size = 100
+text = "Pistoloni Pizza"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="ActualMenu/Control" unique_id=15945726]
 layout_mode = 0
 offset_right = 494.0
@@ -162,21 +264,65 @@ offset_bottom = 166.0
 theme_override_constants/margin_left = 75
 theme_override_constants/margin_top = 75
 
-[node name="Label" type="Label" parent="ActualMenu/Control/MarginContainer" unique_id=1865772351]
-material = SubResource("ShaderMaterial_v86rl")
-layout_mode = 2
-text = "Pistoloni Pizza"
-label_settings = SubResource("LabelSettings_mhnvy")
-
 [node name="MarginContainer2" type="MarginContainer" parent="ActualMenu/Control" unique_id=5998445]
 layout_mode = 0
-offset_right = 83.0
-offset_bottom = 83.0
+offset_right = 378.0
+offset_bottom = 478.0
 theme_override_constants/margin_left = 75
-theme_override_constants/margin_top = 300
+theme_override_constants/margin_top = 400
 
-[node name="Button" type="Button" parent="ActualMenu/Control/MarginContainer2" unique_id=1272320698]
+[node name="VBoxContainer" type="VBoxContainer" parent="ActualMenu/Control/MarginContainer2" unique_id=1532725577]
 layout_mode = 2
-text = "Continue"
+
+[node name="Button" type="Button" parent="ActualMenu/Control/MarginContainer2/VBoxContainer" unique_id=1272320698]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_v86rl")
+text = "New Game"
+
+[node name="Button2" type="Button" parent="ActualMenu/Control/MarginContainer2/VBoxContainer" unique_id=41183597]
+layout_mode = 2
+text = "Settings"
+
+[node name="Button3" type="Button" parent="ActualMenu/Control/MarginContainer2/VBoxContainer" unique_id=599498805]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_13sgg")
+text = "Quit"
+
+[node name="Control" type="Control" parent="ActualMenu/Control" unique_id=1689757303]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="ActualMenu/Control/Control" unique_id=1173072082]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1235.0
+offset_top = -51.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="ActualMenu/Control/Control/MarginContainer3" unique_id=1589722689]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.5882353)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 24
+text = "Pistoloni Pizza (c) 2026 Lazy Couch Collective (Quantum76 and Solar). All rights reserved.
+Copyright (c) 2026 Lazy Couch Collective. No portion of this game may be used or distributed without the prior permission of Lazy Couch Collective."
+horizontal_alignment = 2
+
+[node name="RIgged Character2" parent="." unique_id=2065313554 instance=ExtResource("3_g3eks")]
+transform = Transform3D(1.0696012, 1.4287101e-14, 0.10208472, -1.8357416e-21, 1.5881133, -2.2915972e-15, -0.8747104, 1.7470351e-14, 0.1248298, 3.0145926, 0.4896381, 5.178603)
+
+[node name="Cube" parent="RIgged Character2/Skeleton3D" parent_id_path=PackedInt32Array(2065313554, 528933180) index="0" unique_id=1785911381]
+transform = Transform3D(0.07963346, -1.323489e-23, -1.8626451e-09, -1.323489e-23, 0.06949641, -1.323489e-23, -7.450581e-09, -4.7645603e-22, 0.953774, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_ufwb2")
 
 [editable path="RIgged Character"]
+[editable path="RIgged Character2"]
