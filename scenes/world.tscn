@@ -853,10 +853,10 @@ transform = Transform3D(1, 0, 0, 0, 1.0004548, 0.0018290519, 0, -0.0022873587, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0047062635, -2.0583887)
 
 [node name="RIgged Character" parent="." unique_id=2065313554 instance=ExtResource("3_71j4m")]
-transform = Transform3D(-0.2155063, 2.2292244e-14, 0.15928337, 0, 1.5881133, -2.2915975e-15, -1.3648157, -3.5199729e-15, -0.02515107, -2.8378134, 0.4896381, 2.0913293)
+transform = Transform3D(-0.021954753, 2.0063013e-15, 0.019447634, 0, 0.14293014, -2.797916e-16, -0.13904092, -3.1679744e-16, -0.0030708087, -2.8378134, 0.4896381, 2.0913293)
 
 [node name="Cube" parent="RIgged Character/Skeleton3D" parent_id_path=PackedInt32Array(2065313554, 528933180) index="0" unique_id=1785911381]
-transform = Transform3D(0.07963346, -1.323489e-23, -1.8626451e-09, -1.323489e-23, 0.06949641, -1.323489e-23, -7.450581e-09, -4.7645603e-22, 0.953774, 0, 0, 0)
+transform = Transform3D(0.9489225, 0, -8.940697e-08, -1.2705494e-21, 0.9970345, 2.2234615e-21, -3.5762787e-07, -5.1033735e-20, 9.858957, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_i7141")
 
 [node name="Sounds" type="Node3D" parent="." unique_id=168586294]
