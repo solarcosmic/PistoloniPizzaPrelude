@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bscq6lnina27q" path="res://assets/fonts/DMSans-VariableFont_opsz,wght.ttf" id="8_4mrxx"]
 [ext_resource type="AudioStream" uid="uid://pwfne8pg70ji" path="res://assets/sounds/thunder_rain1.ogg" id="8_jhx03"]
 [ext_resource type="AudioStream" uid="uid://cf6o5q78ysfdh" path="res://assets/sounds/pistol1.ogg" id="9_q5onr"]
+[ext_resource type="AudioStream" uid="uid://cs2pk3van10p" path="res://assets/sounds/get_back_to_work.ogg" id="10_jhx03"]
 [ext_resource type="Script" uid="uid://br3lrvtnwas8y" path="res://scenes/hud.gd" id="10_w7kh3"]
 [ext_resource type="FontFile" uid="uid://dxrvabvhc7wa7" path="res://assets/fonts/Jersey10-Regular.ttf" id="11_e3hyu"]
 
@@ -866,6 +867,10 @@ stream = ExtResource("8_jhx03")
 [node name="Pistol1" type="AudioStreamPlayer" parent="Sounds" unique_id=1819433192]
 stream = ExtResource("9_q5onr")
 
+[node name="GetBackToWork" type="AudioStreamPlayer" parent="Sounds" unique_id=1239210990]
+stream = ExtResource("10_jhx03")
+volume_db = 24.0
+
 [node name="MainUI" type="CanvasLayer" parent="." unique_id=289619648]
 visible = false
 
@@ -915,7 +920,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_7r4gi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5889006, 4.705806, 6.4526877)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1890449823]
-transform = Transform3D(7.2000003, 0, 0, 0, 6.2999997, 0, 0, 0, 1, 0, 4, -2)
+transform = Transform3D(7.2000003, 0, 0, 0, 6.2999997, 0, 0, 0, 1, -14, 4, -2)
 use_collision = true
 
 [node name="OverviewCamera" type="Camera3D" parent="." unique_id=1935705620]
@@ -967,6 +972,71 @@ theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("11_e3hyu")
 theme_override_font_sizes/font_size = 32
 text = "Boss"
+
+[node name="Map" type="Node3D" parent="." unique_id=1604524574]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map" unique_id=1234160999]
+transform = Transform3D(1, 0, 0, 0, 3.9, 0, 0, 0, 12.400001, 2, 2.4, -8)
+use_collision = true
+size = Vector3(0.2, 1, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map" unique_id=1908524559]
+transform = Transform3D(1, 0, 0, 0, 3.9, 0, 0, 0, 12.400001, -2, 2.4, -8)
+use_collision = true
+size = Vector3(0.2, 1, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map" unique_id=1557996522]
+transform = Transform3D(1, 0, 0, 0, 3.9, 0, 0, 0, 12.400001, 0, 0.4000001, -8)
+use_collision = true
+size = Vector3(4, 0.1, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map" unique_id=942132774]
+transform = Transform3D(1, 0, 0, 0, 3.9, 0, 0, 0, 12.400001, -0.5, 0.4000001, -26.597036)
+use_collision = true
+size = Vector3(29, 0.1, 2)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map" unique_id=1867547485]
+transform = Transform3D(0.39999998, 0, 0, 0, 107.41409, 0, 0, 0, 12.400001, 7.9920044, 4.7730803, -14.203236)
+use_collision = true
+size = Vector3(29.744629, 0.1, 0.001)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map" unique_id=693882094]
+transform = Transform3D(0.39999998, 0, 0, 0, 107.41409, 0, 0, 0, 12.400001, -8.5429, 4.7730803, -14.203236)
+use_collision = true
+size = Vector3(32.304443, 0.1, 0.001)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Map" unique_id=1452143398]
+transform = Transform3D(0.39999998, 0, 0, 0, 107.41409, 0, 0, 0, 12.400001, -0.40378904, 4.7730803, -38.83969)
+use_collision = true
+size = Vector3(73, 0.1, 0.001)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Map" unique_id=1224091012]
+transform = Transform3D(-1.7484554e-08, 0, 12.400001, 0, 107.41409, 0, -0.39999998, 0, -5.420212e-07, 13.5962105, 4.7730803, -26.594378)
+use_collision = true
+size = Vector3(61.773438, 0.1, 0.001)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Map" unique_id=1981518152]
+transform = Transform3D(-1.7484554e-08, 0, 12.400001, 0, 107.41409, 0, -0.39999998, 0, -5.420212e-07, -14.4037895, 4.7730803, -26.594378)
+use_collision = true
+size = Vector3(61.773438, 0.1, 0.001)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map" unique_id=2075174903]
+transform = Transform3D(0.39999998, 0, 0, 0, 107.41409, 0, 0, 0, 12.400001, -0.043369293, 6.9062505, -14.203236)
+use_collision = true
+size = Vector3(10.532959, 0.04432068, 0.001)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map" unique_id=431969215]
+transform = Transform3D(1, 0, 0, 0, 3.9, 0, 0, 0, 12.400001, -0.5, 9.4, -26.597036)
+use_collision = true
+size = Vector3(29, 0.1, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map" unique_id=374492583]
+transform = Transform3D(1, 0, 0, 0, 3.9, 0, 0, 0, 12.400001, 0, 4.4, -8)
+use_collision = true
+size = Vector3(4, 0.1, 1)
+
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="." unique_id=1223120799]
+transform = Transform3D(9.942098, 0, 0, 0, 9.942098, 0, 0, 0, 9.942098, 0, 0, 0)
 
 [connection signal="finished" from="Sounds/ThunderRain1" to="." method="_on_thunder_rain_sound_finished"]
 

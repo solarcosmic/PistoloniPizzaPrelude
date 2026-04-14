@@ -31,6 +31,10 @@ var SENSITIVITY = camera_sensitivity / 10000.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.set_player($".")
+	$"../Sounds/GetBackToWork".play()
+	await get_tree().create_timer(3.0).timeout
+	$"../HUD/Label".visible = false
+	$"../HUD/Label2".visible = false
 	#Engine.max_fps = 144
 
 var controller_joy_vector = Vector2.ZERO
