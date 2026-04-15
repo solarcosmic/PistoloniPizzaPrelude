@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bfroxu5khx31b"]
+
+[ext_resource type="PackedScene" uid="uid://b3prlylqiwo3f" path="res://assets/Character Base.glb" id="1_cl4m7"]
+
+[node name="Root Scene" unique_id=1811575277 instance=ExtResource("1_cl4m7")]

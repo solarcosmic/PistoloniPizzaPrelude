@@ -56,8 +56,8 @@ func _shoot():
 	var bulletClone = bullet.instantiate()
 	get_tree().current_scene.add_child(bulletClone)
 	print(bulletClone)
-	bulletClone.global_position = bulletmarker.global_position
 	var dir = _get_shoot_direction()
+	bulletClone.global_position = bulletmarker.global_position + dir * 0.2
 	bulletClone.direction = dir
 	bulletClone.look_at(raycastend.global_position + dir)
 	$"../Sounds/Pistol1".play()
@@ -95,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
 	direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	print("[Cosmic/DEBUG] Direction: ", direction, " Velocity: ", velocity)
+	#print("[Cosmic/DEBUG] Direction: ", direction, " Velocity: ", velocity)
 	if is_on_floor():
 		if direction:
 			velocity.x = direction.x * SPEED
@@ -111,9 +111,9 @@ func _physics_process(delta: float) -> void:
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 	
-	var is_idle = Globals.is_player_idle()
-	if is_idle and is_on_floor():
-		print("[Cosmic/DEBUG]: " + str(Time.get_unix_time_from_system()) + " is idle")
+	#avar is_idle = Globals.is_player_idle()
+	#if is_idle and is_on_floor():
+		#print("[Cosmic/DEBUG]: " + str(Time.get_unix_time_from_system()) + " is idle")
 
 	move_and_slide()
 

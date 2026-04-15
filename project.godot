@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DiscordRPCLoader="*uid://k1ai3cpv45fp"
 DiscordConnect="*uid://cypcrwm8llv87"
 Globals="*uid://8siimc1h8u5u"
 
@@ -28,7 +27,7 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [input]
 

@@ -3,23 +3,23 @@
 [ext_resource type="Script" uid="uid://m2wvbjs7ga6j" path="res://scenes/bullet.gd" id="1_y25gk"]
 [ext_resource type="Shader" uid="uid://dau6mrtpa8hcc" path="res://assets/ps1psx.gdshader" id="2_l5glv"]
 
-[sub_resource type="Gradient" id="Gradient_eoqba"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_y25gk"]
+colors = PackedColorArray(1, 0, 0, 1, 0.3250816, 0.16055709, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qncy5"]
-gradient = SubResource("Gradient_eoqba")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l5glv"]
+gradient = SubResource("Gradient_y25gk")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tamys"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eoqba"]
 render_priority = 0
 shader = ExtResource("2_l5glv")
 shader_parameter/affine_mapping = false
-shader_parameter/albedo = SubResource("GradientTexture2D_qncy5")
+shader_parameter/albedo = SubResource("GradientTexture1D_l5glv")
 shader_parameter/alpha_scissor = 0.5
-shader_parameter/jitter = 0.550000026125
+shader_parameter/jitter = 0.2000000095
 shader_parameter/resolution = Vector2i(320, 240)
 
-[sub_resource type="BoxMesh" id="BoxMesh_26lx3"]
-material = SubResource("ShaderMaterial_tamys")
+[sub_resource type="CylinderMesh" id="CylinderMesh_qncy5"]
+material = SubResource("ShaderMaterial_eoqba")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1cfmv"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
@@ -28,11 +28,11 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 script = ExtResource("1_y25gk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=511760062]
-transform = Transform3D(-2.6226834e-08, 0, 0.12, 0, 0.12, 0, -0.6, 0, -5.2453664e-09, 0, 0, 0)
-mesh = SubResource("BoxMesh_26lx3")
+transform = Transform3D(-2.5177753e-09, 0, 0.057599995, -0.057599984, -1.31134135e-08, -2.5177758e-09, 2.5177753e-09, -0.29999995, -9.458083e-17, 0, 0, 0)
+mesh = SubResource("CylinderMesh_qncy5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=759974227]
-transform = Transform3D(-2.6226834e-08, 0, 0.12, 0, 0.12, 0, -0.6, 0, -5.2453664e-09, 0, 0, 0)
+transform = Transform3D(-2.6226834e-08, 0, 0.057600003, 0, 0.057600003, 0, -0.6, 0, -2.517776e-09, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_1cfmv")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

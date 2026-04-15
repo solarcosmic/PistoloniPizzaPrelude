@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://yc40jmj8i5u5"]
+
+[ext_resource type="PackedScene" uid="uid://cpdvypdxp6phb" path="res://assets/usp.glb" id="1_uondn"]
+
+[node name="usp" unique_id=1602613654 instance=ExtResource("1_uondn")]
